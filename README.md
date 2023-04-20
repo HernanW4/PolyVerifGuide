@@ -164,7 +164,7 @@ repo inside the PolyVerifInstall folder.
 
 Move this to script files to the home directory and make sure to make them executable.
 
-1. Run the polyverif_install.sh first.
+1. Run the **polyverif_install.sh** first.
 
 After running the install script it will take a bit for all dependencies to install 
 properly. Make sure to pay attention to the terminal for any input needed from 
@@ -179,7 +179,7 @@ to mess with the installation nor the running of the software.
 
 If all goes well proceed to step 2.
 
-2. Run the polyverif_build.sh file
+2. Run the **polyverif_build.sh** file
 
 This will probably take longer then the first script file as is the one that 
 builds all dependencies. 
@@ -192,9 +192,86 @@ Errors you may see:
 >CMake Error: The current CMakeCache.txt directory ~/avp_demo/build/avp_demo/CMakeCache.txt is different than the directory /home/acclivis/avp_demo/build/avp_demo where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
 CMake Error: The source directory "/home/acclivis/avp_demo" does not exist.
 
+The first error can mean that the installation of docker and nvidia-docker failed. 
+Or that it cannot be found. I recommend to first reboot the system and update 
+the repositories of the system with ***sudo apt update*** if you already installed
+nvidia-docker. If this does not work then you may research about how to properly 
+install it. I do also recommend to make sure your Nvidia drivers are up to date. 
 
+
+Second error is still unkown if its a big deal. Having this error will not cause 
+any problems within the installation.
+
+If everything goes well you should now have a new folder within your home directory.
+This folder should be **"adehome"**. If not sure try to move into the directoy by 
+**cd ~/adehome/** If this fails it means something went wrong with the installation. 
+
+
+#### Installing The Simulator
+
+Please only do this step if the previous installs were successful.
+
+
+As mentioned before the PolyVerif software uses a simulator by the name of 
+OSSDC. We have already installed the big dependencies, this is not as hard 
+as the previous ones.
  
+To get started you first have to download the OSSDC folder found in [this link](https://drive.google.com/uc?export=download&id=1sPAOsk_AwnXgeW9QW3aTJPa3TjmjDNWl).
 
+Make sure to extract the content of the zip to get a folder by the name of 
+**OSSDC-SIM-V1_1-Linux**. If this is not the extracted content then open the 
+extracted content as it may be inside. If this folder is still not found then 
+the download of the zip folder went wrong somewhere. So make sure to download it
+once again.
+
+If not sure how to unzip you can use the command line, like this. 
+
+Once the **OSSDC-SIM-V1_1-Linux** folder has been identified we will move it to 
+the **adehome** directory. I will show you the command to move folders but you 
+can do it by using the File Manager UI. 
+
+    unzip ~/Downloads/downloadOSSDC-SIM-v1_1-Linux.zip ~/adehome/ 
+
+The command shown above does all 2 things in one. It extracts the content from 
+the zip folder and moves it straight to the **adehome** directory.
+
+Now all there is left to do is going into the **OSSDC-SIM-V1_1-Linux** folder and 
+make two files executables. Run the following command to make this happen.
+
+    sudo chmod +x ~/adehome/OSSDC-SIM-v1_1-Linux/run-OSSDC-SIM-v1.sh ~/adehome/OSSDC-SIM-v1_1-Linux/OSSDC-SIM
+
+This command will make the files specified executable.
+
+If you run into an issue it may be better to open **OSSDC-SIM-V1_1-Linux** directory
+first and then run the same command but without the paths. Something like this. 
+
+    sudo chmod +x run-OSSDC-SIM-v1.sh OSSDC-SIM
+
+#### Next
+
+Now you should have all the proper dependencies installed and everything should be good
+to go. To run the PolyVerif software you will have to use the terminal run the following commands.
+
+    cd ~/adehome/PolyVerif/
+
+    ./polyVerif 
+
+
+Let it run and build and you should be greeted with this window.
+
+![PolyVerif Main Window](images/polyVerif_main_window.png)
+
+This is where the magic happens. To know what everything does and how to run scenes please
+check the **PolyVerif_Usage_Guide.md** to a run-through on what everything does. 
+
+Enjoy!!
+
+#### Contact
+
+If any issues happen you can go ahead and make an Issue within this same github,
+or contact me directly at hernanw4@my.erau.edu. 
+
+Or the main professor Dr. Akbas at akbasm@erau.edu.
 
 
 
